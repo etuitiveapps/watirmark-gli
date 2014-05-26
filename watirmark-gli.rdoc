@@ -1,0 +1,5 @@
+= watirmark-gli
+
+Generate this with
+    watirmark-gli rdoc
+After you have described your command line interface
