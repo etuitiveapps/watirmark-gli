@@ -1,5 +1,6 @@
 # Ensure we require the local version and not one we might have installed already
 require File.join([File.dirname(__FILE__),'lib','watirmark-gli','version.rb'])
+require File.join([File.dirname(__FILE__),'lib','watirmark-gli','new.rb'])
 spec = Gem::Specification.new do |s| 
   s.name = 'watirmark-gli'
   s.version = WatirmarkGli::VERSION
@@ -8,8 +9,7 @@ spec = Gem::Specification.new do |s|
   s.homepage = 'http://your.website.com'
   s.platform = Gem::Platform::RUBY
   s.summary = 'A description of your project'
-  s.files = `git ls-files`.split("
-")
+  s.files = `git ls-files`.split("")
   s.require_paths << 'lib'
   s.has_rdoc = true
   s.extra_rdoc_files = ['README.markdown','watirmark-gli.rdoc']
