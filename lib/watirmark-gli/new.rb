@@ -1,3 +1,6 @@
+# http://stackoverflow.com/questions/980547/how-do-i-execute-ruby-template-files-erb-without-a-web-server-from-command-lin
+# http://ruby-doc.org/stdlib-2.1.2/libdoc/erb/rdoc/ERB.html
+# http://ruby-doc.org/stdlib-1.9.3/libdoc/fileutils/rdoc/FileUtils.html
 require 'fileutils'
 require 'erb'
 module WatirmarkGli
@@ -67,6 +70,40 @@ module WatirmarkGli
       generate_site_steps_rb
     end
 
+    def self.create_mvc_directory
+      mvc_directory_path = "#{@relative_path}/generators/mvc"
+      create_directory(mvc_directory_path)
+    end
+
+    def self.create_generators_directory
+      generators_directory_path = "#{@relative_path}/generators"
+      create_directory(generators_directory_path)
+      create_mvc_directory
+    end
+
+    def self.create_checkers_directory
+      checkers_directory_path = "#{@relative_path}/lib/name/checkers"
+      create_directory(checkers_directory_path)
+    end
+
+    def self.create_site_directory
+      site_directory_path = "#{@relative_path}/lib/name/site"
+      create_directory(site_directory_path)
+    end
+
+    def self.create_name_directory
+      name_directory_path = "#{@relative_path}/lib/name"
+      create_directory(name_directory_path)
+      create_checkers_directory
+      create_site_directory
+    end
+
+    def self.create_lib_directory
+      lib_directory_path = "#{@relative_path}/lib"
+      create_directory(lib_directory_path)
+      create_name_directory
+    end
+
     def self.generate_generate_rb
       file_name_erb = "#{@templates_path}/script/generate.rb.erb"
       file_name = "#{@relative_path}/script/generate.rb"
@@ -101,6 +138,8 @@ module WatirmarkGli
       initialize(file_name)
       create_directory(@relative_path)
       create_features_directory
+      create_generators_directory
+      create_lib_directory
       create_script_directory
       generate_erb_config_yml
       generate_gemfile_rb
