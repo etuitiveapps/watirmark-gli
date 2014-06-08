@@ -27,15 +27,56 @@ module WatirmarkGli
       end
     end
 
-    def self.create_script_directory
-      script_directory_path = "#{@relative_path}/script"
-      create_directory(script_directory_path)
+    def self.generate_env_rb
+      file_name_erb = "#{@templates_path}/features/env.rb.erb"
+      file_name = "#{@relative_path}/features/env.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_model_steps_rb
+      file_name_erb = "#{@templates_path}/features/model_steps.rb.erb"
+      file_name = "#{@relative_path}/features/model_steps.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_post_error_steps_rb
+      file_name_erb = "#{@templates_path}/features/post_error_steps.rb.erb"
+      file_name = "#{@relative_path}/features/post_error_steps.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_sample_feature
+      file_name_erb = "#{@templates_path}/features/sample.feature.erb"
+      file_name = "#{@relative_path}/features/sample.feature"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_site_steps_rb
+      file_name_erb = "#{@templates_path}/features/site_steps.rb.erb"
+      file_name = "#{@relative_path}/features/site_steps.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.create_features_directory
+      features_directory_path = "#{@relative_path}/features"
+      create_directory(features_directory_path)
+      generate_env_rb
+      generate_model_steps_rb
+      generate_post_error_steps_rb
+      generate_sample_feature
+      generate_site_steps_rb
     end
 
     def self.generate_generate_rb
       file_name_erb = "#{@templates_path}/script/generate.rb.erb"
       file_name = "#{@relative_path}/script/generate.rb"
       process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.create_script_directory
+      script_directory_path = "#{@relative_path}/script"
+      create_directory(script_directory_path)
+      generate_generate_rb
     end
 
     def self.generate_erb_config_yml
@@ -59,8 +100,8 @@ module WatirmarkGli
     def self.new(file_name)
       initialize(file_name)
       create_directory(@relative_path)
+      create_features_directory
       create_script_directory
-      generate_generate_rb
       generate_erb_config_yml
       generate_gemfile_rb
       generate_rakefile_rb
