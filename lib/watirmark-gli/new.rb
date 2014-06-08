@@ -27,6 +27,17 @@ module WatirmarkGli
       end
     end
 
+    def self.create_script_directory
+      script_directory_path = "#{@relative_path}/script"
+      create_directory(script_directory_path)
+    end
+
+    def self.generate_generate_rb
+      file_name_erb = "#{@templates_path}/script/generate.rb.erb"
+      file_name = "#{@relative_path}/script/generate.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
     def self.generate_erb_config_yml
       file_name_erb = "#{@templates_path}/config.yml.erb"
       file_name = "#{@relative_path}/config.yml"
@@ -39,11 +50,20 @@ module WatirmarkGli
       process_erb_file(file_name_erb, file_name)
     end
 
+    def self.generate_rakefile_rb
+      file_name_erb = "#{@templates_path}/rakefile.rb.erb"
+      file_name = "#{@relative_path}/rakefile.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
     def self.new(file_name)
       initialize(file_name)
       create_directory(@relative_path)
+      create_script_directory
+      generate_generate_rb
       generate_erb_config_yml
       generate_gemfile_rb
+      generate_rakefile_rb
     end
   end
 end
