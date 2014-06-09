@@ -11,6 +11,10 @@ module WatirmarkGli
       @relative_path = "#{file_relative_path}/#{file_name}"
       @templates_path = "#{file_relative_path}/templates"
     end
+    # https://www.ruby-forum.com/topic/4411006
+    def self.camelize(string_input)
+      string_input.split('_').each { |s| s.capitalize! }.join('')
+    end
 
     def self.create_directory(directory_path)
       if Dir.exists? directory_path
@@ -81,9 +85,16 @@ module WatirmarkGli
       create_mvc_directory
     end
 
+    def self.generate_page_load_checker_rb
+      file_name_erb = "#{@templates_path}/lib/name/checkers/page_load_checker.rb.erb"
+      file_name = "#{@relative_path}/lib/name/checkers/page_load_checker.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
     def self.create_checkers_directory
       checkers_directory_path = "#{@relative_path}/lib/name/checkers"
       create_directory(checkers_directory_path)
+      generate_page_load_checker_rb
     end
 
     def self.create_site_directory
