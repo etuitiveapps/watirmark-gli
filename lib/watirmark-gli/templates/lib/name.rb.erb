@@ -1,4 +1,4 @@
-module <%= name.camelize %>; end
+module <%= WatirmarkGli::Project.camelize(name) %>; end
 
 require '<%= name.downcase %>/configuration'
 require 'watirmark'

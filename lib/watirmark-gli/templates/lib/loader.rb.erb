@@ -1,5 +1,5 @@
 require 'watirmark/loader'
-module <%= name.camelize %>
+module <%= WatirmarkGli::Project.camelize(name) %>
   class Loader
     class << self
       @@loaded = {}
@@ -14,7 +14,7 @@ module <%= name.camelize %>
       def load_files(name, files)
         Watirmark.loader do
           base_directory File.dirname(__FILE__)
-          product '<%= name.camelize %>'
+          product '<%= WatirmarkGli::Project.camelize(name) %>'
           load_files "workflows/#{name}#{files}"
         end
       end

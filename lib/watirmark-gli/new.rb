@@ -122,12 +122,47 @@ module WatirmarkGli
       process_erb_file(file_name_erb, file_name)
     end
 
+    def self.generate_configuration_rb
+      file_name_erb = "#{@templates_path}/lib/configuration.rb.erb"
+      file_name = "#{@relative_path}/lib/configuration.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_core_libraries_rb
+      file_name_erb = "#{@templates_path}/lib/core_libraries.rb.erb"
+      file_name = "#{@relative_path}/lib/core_libraries.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_loader_rb
+      file_name_erb = "#{@templates_path}/lib/loader.rb.erb"
+      file_name = "#{@relative_path}/lib/loader.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_name_rb
+      file_name_erb = "#{@templates_path}/lib/name.rb.erb"
+      file_name = "#{@relative_path}/lib/name.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_workflows_rb
+      file_name_erb = "#{@templates_path}/lib/workflows.rb.erb"
+      file_name = "#{@relative_path}/lib/workflows.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
     def self.create_site_directory
       site_directory_path = "#{@relative_path}/lib/name/site"
       create_directory(site_directory_path)
       generate_base_controller_rb
       generate_base_view_rb
       generate_search_controller_rb
+      generate_configuration_rb
+      generate_core_libraries_rb
+      generate_loader_rb
+      generate_name_rb
+      generate_workflows_rb
     end
 
     def self.create_name_directory
