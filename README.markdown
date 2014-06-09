@@ -2,7 +2,7 @@ watirmark-gli
 ===============
 
 
-This file contains watir script generator. 
+This file contains watir script generator.
 
 [![Build Status](https://secure.travis-ci.org/convio/watirmark.png)](http://travis-ci.org/convio/watirmark)
 
