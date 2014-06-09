@@ -1,4 +1,5 @@
-module <%= name.camelize %>
+
+module <%= WatirmarkGli::Project.camelize(name) %>
   class SearchController < BaseController
 
     def current_record_visible?

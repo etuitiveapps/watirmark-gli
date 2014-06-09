@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    watirmark-gli (6.0.0b002)
+    watirmark-gli (6.0.0b005)
       gli (= 2.10.0)
 
 GEM

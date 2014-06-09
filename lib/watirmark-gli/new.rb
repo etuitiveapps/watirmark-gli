@@ -91,15 +91,43 @@ module WatirmarkGli
       process_erb_file(file_name_erb, file_name)
     end
 
+    def self.generate_post_errors_checker_rb
+      file_name_erb = "#{@templates_path}/lib/name/checkers/post_errors_checker.rb.erb"
+      file_name = "#{@relative_path}/lib/name/checkers/post_errors_checker.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
     def self.create_checkers_directory
       checkers_directory_path = "#{@relative_path}/lib/name/checkers"
       create_directory(checkers_directory_path)
       generate_page_load_checker_rb
+      generate_post_errors_checker_rb
+    end
+
+    def self.generate_base_controller_rb
+      file_name_erb = "#{@templates_path}/lib/name/site/base_controller.rb.erb"
+      file_name = "#{@relative_path}/lib/name/site/base_controller.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_base_view_rb
+      file_name_erb = "#{@templates_path}/lib/name/site/base_view.rb.erb"
+      file_name = "#{@relative_path}/lib/name/site/base_view.rb"
+      process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.generate_search_controller_rb
+      file_name_erb = "#{@templates_path}/lib/name/site/search_controller.rb.erb"
+      file_name = "#{@relative_path}/lib/name/site/search_controller.rb"
+      process_erb_file(file_name_erb, file_name)
     end
 
     def self.create_site_directory
       site_directory_path = "#{@relative_path}/lib/name/site"
       create_directory(site_directory_path)
+      generate_base_controller_rb
+      generate_base_view_rb
+      generate_search_controller_rb
     end
 
     def self.create_name_directory

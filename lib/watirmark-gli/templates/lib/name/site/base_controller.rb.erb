@@ -1,4 +1,4 @@
-module <%= name.camelize %>
+module <%= WatirmarkGli::Project.camelize(name) %>
   class BaseController < Watirmark::WebPage::Controller
 
     # default way of submitting a form
