@@ -7,6 +7,7 @@ module WatirmarkGli
   # Create new WatirmarkGli project
   class Project
     def self.initialize(file_name)
+      file_name = file_name.capitalize
       file_relative_path = File.dirname(__FILE__)
       @relative_path = "#{file_relative_path}/#{file_name}"
       @templates_path = "#{file_relative_path}/templates"
@@ -17,7 +18,7 @@ module WatirmarkGli
     end
 
     def self.create_directory(directory_path)
-      if Dir.exists? directory_path
+      if Dir.exist? directory_path
         puts "Directory already exist at path:'#{directory_path}'"
       else
         FileUtils.mkdir_p directory_path
