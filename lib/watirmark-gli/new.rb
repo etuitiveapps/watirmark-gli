@@ -9,12 +9,18 @@ module WatirmarkGli
     def self.initialize(file_name)
       file_name = file_name.capitalize
       file_relative_path = File.dirname(__FILE__)
-      @relative_path = "#{file_relative_path}/#{file_name}"
+      current_directory = Dir.pwd
+      @relative_path = "#{current_directory}/#{file_name}"
       @templates_path = "#{file_relative_path}/templates"
     end
     # https://www.ruby-forum.com/topic/4411006
     def self.camelize(string_input)
       string_input.split('_').each { |s| s.capitalize! }.join('')
+    end
+
+    def self.print_finished_directory
+      # puts Dir.entries(@relative_path)
+      puts Dir.entries(@relative_path).select {|f| !File.directory? f}
     end
 
     def self.create_directory(directory_path)
@@ -219,6 +225,7 @@ module WatirmarkGli
       generate_erb_config_yml
       generate_gemfile_rb
       generate_rakefile_rb
+      print_finished_directory
     end
   end
 end
