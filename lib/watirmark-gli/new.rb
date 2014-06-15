@@ -4,6 +4,7 @@
 # http://ruby.about.com/od/beginningruby/a/dir1.htm
 require 'fileutils'
 require 'erb'
+# require 'tree_view.rb'
 module WatirmarkGli
   # Create new WatirmarkGli project
   class Project
@@ -12,24 +13,12 @@ module WatirmarkGli
       file_relative_path = File.dirname(__FILE__)
       current_directory = Dir.pwd
       @relative_path = "#{current_directory}/#{file_name}"
-      puts @relative_path
       @templates_path = "#{file_relative_path}/templates"
     end
 
     # https://www.ruby-forum.com/topic/4411006
     def self.camelize(string_input)
       string_input.split('_').each { |s| s.capitalize! }.join('')
-    end
-
-    # http://compsci.ca/v3/viewtopic.php?t=13034
-    def self.print_directory_as_tree(dir = '.', nesting = 0)
-      Dir.foreach(dir) do |entry|
-        next if entry =~ /^\.{1,2}/   # Ignore ".", "..", or hidden files
-        puts '|   ' * nesting + "|-- #{entry}"
-        if File.stat(d = "#{dir}#{File::SEPARATOR}#{entry}").directory?
-          print_directory_as_tree(d, nesting + 1)
-        end
-      end
     end
 
     def self.create_directory(directory_path)
@@ -234,7 +223,7 @@ module WatirmarkGli
       generate_erb_config_yml
       generate_gemfile_rb
       generate_rakefile_rb
-      print_directory_as_tree(@relative_path, 0)
+      TreeView.print(@relative_path)
     end
   end
 end
