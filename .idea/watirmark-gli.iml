@@ -16,7 +16,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="watirmark-gli (v[path], /home/napoleon/RubymineProjects/watirmark-gli) [path][gem]">
+      <library name="watirmark-gli (v[path], /Users/namoricoe/RubymineProjects/watirmark-gli) [path][gem]">
         <CLASSES>
           <root url="file://$MODULE_DIR$/bin" />
           <root url="file://$MODULE_DIR$/lib" />
