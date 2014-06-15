@@ -39,6 +39,30 @@ command :new do |c|
   end
 end
 
+desc 'Describe mvc here'
+arg_name 'Describe arguments to mvc here'
+command :mvc do |c|
+  c.desc 'Describe a switch to mvc'
+  c.switch :s
+
+  c.desc 'Describe a flag to new'
+  c.default_value 'default'
+  c.flag :f
+  c.action do |global_options,options,args|
+    if args.length == 3
+      controller_name = args[0]
+      model_name = _name = args[1]
+      view_name = args[2]
+      WatirmarkGli::MVC.new(controller_name,model_name,view_name)
+    else
+      puts "Error: invalid number of arguments-- #{args}"
+    end
+    # args.each do |arg|
+    #   # WatirmarkGli::MVC.new(arg)
+    # end
+  end
+end
+
 pre do |global,command,options,args|
   # Pre logic here
   # Return true to proceed; false to abort and not call the

@@ -1,6 +1,7 @@
 # http://stackoverflow.com/questions/980547/how-do-i-execute-ruby-template-files-erb-without-a-web-server-from-command-lin
 # http://ruby-doc.org/stdlib-2.1.2/libdoc/erb/rdoc/ERB.html
 # http://ruby-doc.org/stdlib-1.9.3/libdoc/fileutils/rdoc/FileUtils.html
+# http://ruby.about.com/od/beginningruby/a/dir1.htm
 require 'fileutils'
 require 'erb'
 module WatirmarkGli
