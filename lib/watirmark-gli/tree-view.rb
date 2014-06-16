@@ -2,14 +2,14 @@
 module WatirmarkGli
   # Print Tree View of a project
   class TreeView
-    def self.print(relative_path)
+    def print(relative_path)
       directory_name = directory_name(relative_path)
       directories_array = Pathname.new(relative_path).children.select { |c| c.directory? }
       print_directories(directory_name, directories_array)
       print_files(relative_path)
     end
 
-    def self.print_directories(directory_name, directories_array)
+    def print_directories(directory_name, directories_array)
       puts "[#{directory_name}]"
       directories_array.each do |directory|
         # print_tree(directory,0)
@@ -23,7 +23,7 @@ module WatirmarkGli
       end
     end
 
-    def self.directory_name(file_path)
+    def directory_name(file_path)
       dir_name = ''
       file_path.each_char do |character|
         if character == '/'
@@ -35,7 +35,7 @@ module WatirmarkGli
       dir_name
     end
 
-    def self.print_dir_name_tree(dir, nesting = 0)
+    def print_dir_name_tree(dir, nesting = 0)
       dir_name = directory_name(dir.to_s)
       puts '|   ' * nesting + "|-- #{dir_name}" if nesting < 2
       Dir.foreach(dir) do |entry|
