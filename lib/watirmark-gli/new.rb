@@ -4,7 +4,6 @@
 # http://ruby.about.com/od/beginningruby/a/dir1.htm
 require 'fileutils'
 require 'erb'
-# require 'tree_view.rb'
 module WatirmarkGli
   # Create new WatirmarkGli project
   class Project
