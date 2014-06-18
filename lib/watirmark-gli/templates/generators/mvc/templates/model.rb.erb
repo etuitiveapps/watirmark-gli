@@ -1,7 +1,3 @@
-module <%= name.camelize %>
-<%%= create_modules %>
-  <%%= indents.last %>class <%%= name.camelize %>Model < Watirmark::Model::Factory
-  <%%= indents.last %>  keywords <%%= name.camelize %>View.keywords
-  <%%= indents.last %>end
-<%%= create_module_end %>
+module <%= MVC.name %>
+    # Model data will go here
 end

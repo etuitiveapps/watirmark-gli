@@ -222,7 +222,7 @@ module WatirmarkGli
       generate_erb_config_yml
       generate_gemfile_rb
       generate_rakefile_rb
-      tree_view = TreeView.new()
+      tree_view = TreeView.new
       tree_view.print(@relative_path)
     end
   end

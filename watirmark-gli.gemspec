@@ -2,6 +2,7 @@
 require File.join([File.dirname(__FILE__),'lib','watirmark-gli','version.rb'])
 require File.join([File.dirname(__FILE__),'lib','watirmark-gli','new.rb'])
 require File.join([File.dirname(__FILE__),'lib','watirmark-gli','tree-view.rb'])
+require File.join([File.dirname(__FILE__),'lib','watirmark-gli','mvc.rb'])
 spec = Gem::Specification.new do |s| 
   s.name = 'watirmark-gli'
   s.version = WatirmarkGli::VERSION

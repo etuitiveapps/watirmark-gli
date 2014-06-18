@@ -35,7 +35,7 @@ class MvcGenerator < Thor
     end
 
     def workflow_loader
-      "<%= name.camelize %>::Loader.load_workflow"
+      "<%= MVC.name %>::Loader.load_workflow"
     end
 
     def create_modules
