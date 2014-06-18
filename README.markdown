@@ -10,20 +10,20 @@ Generating a new watirmark project is easy. We've taken advantage of several bui
 ```bash
 # develop mode
 ##check current version
-bundle exec bin/watirmark-gli-generator -v
+bundle exec bin/watirmark-gli -v
 ## Or
-bundle exec bin/watirmark-gli-generator --version
+bundle exec bin/watirmark-gli --version
 ```
 
 ```bash
 # develop mode
 ##create a new project
-bundle exec bin/watirmark-gli-generator new my_test_project
+bundle exec bin/watirmark-gli new my_test_project
 ```
 
 ```bash
 ## ---(Not yet Implemented)---
 ## Production mode
 gem install watirmark
-watirmark-gli-generator new my_test_project
+watirmark-gli new my_test_project
 ```
