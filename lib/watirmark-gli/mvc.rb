@@ -6,9 +6,7 @@ module WatirmarkGli
       @mvc_name = mvc_name
       file_relative_path = File.dirname(__FILE__)
       current_directory = Dir.pwd
-      puts current_directory
       @relative_path = "#{current_directory}"
-      puts @relative_path
       @templates_path = "#{file_relative_path}/templates/generators/mvc/templates"
       puts  @templates_path
     end
@@ -31,33 +29,41 @@ module WatirmarkGli
 
     def self.create_project_name_directory_in_lib
       project_name = directory_name(@relative_path)
-      directory_path = "#{@relative_path}/lib/#{project_name}"
+      directory_path = relative_path("lib/#{project_name}")
       Project.create_directory(directory_path)
-      @relative_path = "#{@relative_path}/lib/#{project_name}"
+      @relative_path = relative_path("lib/#{project_name}")
     end
 
     def self.create_mvc_directory(directory_name)
-      directory_path = "#{@relative_path}/#{directory_name}"
+      directory_path = relative_path("#{directory_name}")
       Project.create_directory(directory_path)
-      @relative_path = "#{@relative_path}/#{directory_name}"
+      @relative_path = relative_path("#{directory_name}")
     end
 
     def self.generate_controller_rb(controller_name)
-      file_name_erb = "#{@templates_path}/controller.rb.erb"
-      file_name = "#{@relative_path}/#{controller_name}.rb"
+      file_name_erb = template_path('controller.rb.erb')
+      file_name = relative_path("#{controller_name}.rb")
       Project.process_erb_file(file_name_erb, file_name)
     end
 
     def self.generate_view_rb(view_name)
-      file_name_erb = "#{@templates_path}/view.rb.erb"
-      file_name = "#{@relative_path}/#{view_name}_view.rb"
+      file_name_erb = template_path('view.rb.erb')
+      file_name = relative_path("#{view_name}_view.rb")
       Project.process_erb_file(file_name_erb, file_name)
     end
 
     def self.generate_model_rb(model_name)
-      file_name_erb = "#{@templates_path}/model.rb.erb"
-      file_name = "#{@relative_path}/#{model_name}_model.rb"
+      file_name_erb = template_path('model.rb.erb')
+      file_name = relative_path("#{model_name}_model.rb")
       Project.process_erb_file(file_name_erb, file_name)
+    end
+
+    def self.template_path(erb_file_name)
+      "#{@templates_path}/#{erb_file_name}"
+    end
+
+    def self.relative_path(mvc_name)
+      "#{@relative_path}/#{mvc_name}"
     end
 
     def self.new(directory_name,mvc_name)
